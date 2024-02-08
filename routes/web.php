@@ -17,4 +17,9 @@ Route::post('/signIn', [UserController::class, 'signIn_valid'])->name('signIn_va
 Route::get('/signUp', [UserController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [UserController::class, 'signUp_valid'])->name('signUp_valid');
 
+Route::get('/account', [UserController::class, 'account'])->name('account');
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
 

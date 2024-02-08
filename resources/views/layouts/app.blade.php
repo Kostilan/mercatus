@@ -9,19 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
    
 
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Rutube</a>
+            <a class="navbar-brand" href="#">Mercatus</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -39,7 +43,7 @@
                     @auth
                         @if (Auth::user()->role_id == 2)
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('account') }}"></a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('account') }}">Аккаунт</a>
                             </li>
                         @endif
                         @if (Auth::user()->role_id == 1)
@@ -60,8 +64,7 @@
         @yield('content')
     </div>
 
-    <script src="bootstrap.js"></script>
-    <script src="script.js"></script>
+
 </body>
 
 </html>

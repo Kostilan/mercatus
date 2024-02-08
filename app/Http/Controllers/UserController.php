@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
@@ -47,7 +48,7 @@ class UserController extends Controller
     User::create([
         'name' => $request['name'],
         'email' => $request['email'],
-        'password' => $request['password'],
+        'password' => Hash::make($request['password']),
         'role_id' => 2
     ]);
         return redirect(route('index'))->with('success', 'Вы успешно зарегистрировались, теперь можете авторизоваться!');
@@ -66,10 +67,10 @@ class UserController extends Controller
     if(Auth::attempt($credentails)){
         $role_id = Auth::user()->role_id;
         switch($role_id){
-        case 1:
+        case $role_id == 1:
             return redirect(route('admin'));
-            case 2:
-                return redirect(route('account'));
+            case $role_id == 2:
+                return redirect('account');
             default:
             return redirect(route('index'));
         }
@@ -82,5 +83,10 @@ class UserController extends Controller
     public function logout(){
         Auth::logout();
         return redirect(route('index'));
+    }
+
+    public function account(){
+        $user = Auth::user();
+        return view('account', compact('user'));
     }
 }
