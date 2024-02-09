@@ -18,6 +18,8 @@ Route::get('/signUp', [UserController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [UserController::class, 'signUp_valid'])->name('signUp_valid');
 
 Route::get('/account', [UserController::class, 'account'])->name('account');
+Route::post('/account/update', [UserController::class, 'update_account'])->name('update_account');
+
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
