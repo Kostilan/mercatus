@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
     <link rel="stylesheet" href="/css/style.css">
 
-   
+
 
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
@@ -25,7 +25,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Mercatus</a>
+            <a class="navbar-brand" href="/">Mercatus</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -37,10 +37,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}">Каталог</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('about') }}">О нас</a>
+                    </li>
                     @guest
                         <li class="nav-item d-flex">
-                            <a class="nav-link active" aria-current="page" href="{{route('signUp')}}">Регистрация</a>
-                            <a class="nav-link active" aria-current="page" href="{{route('signIn')}}">Авторизация</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('signUp') }}">Регистрация</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('signIn') }}">Авторизация</a>
                         </li>
                     @endguest
                     @auth
@@ -48,7 +51,6 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('account') }}">Аккаунт</a>
                             </li>
-                            
                         @endif
                         @if (Auth::user()->role_id == 1)
                             <li class="nav-item">
@@ -59,6 +61,9 @@
                             <a class="nav-link active" aria-current="page" href="/logout">Выход</a>
                         </li>
                     @endauth
+                    <li class="nav-item">
+                    </li>
+
                 </ul>
             </div>
         </div>
