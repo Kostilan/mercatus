@@ -25,6 +25,7 @@
             </ul>
         </div>
         <div class="container">
+            <h2>Данные аккаунта</h2>
             <form action="{{ route('update_account') }}" method="POST">
                 @csrf
                 <input type="hidden" value="{{ $user->id }}" name="user_id">

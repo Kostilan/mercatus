@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('photo');
             $table->foreignId('brand_id')->constrained('brands');
             $table->foreignId('category_id')->constrained('categories');
-            $table->integer('product_code');
             $table->integer('quantity');
             $table->integer('cost');
             $table->timestamps();

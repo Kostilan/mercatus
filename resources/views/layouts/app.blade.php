@@ -9,17 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="css/bootstrap-utilities.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-
-
-
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-utilities.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    
 </head>
 
 <body>
