@@ -26,7 +26,15 @@ class ProductController extends Controller
 
     public function product($id){
         $product = Product::find($id);
-        // dd($product);
-        return view('product', compact('product'));
+        $sizeIds = SizeId::where('product_id',$id)->get();
+        // dd($id);
+        return view('product', compact('product', 'sizeIds'));
+    }
+
+    function basket_create($id){
+        $product = Product::find($id);
+        Basket::create([
+            '' => '',
+        ]);
     }
 }

@@ -10,6 +10,7 @@
     @endif
 
     <div class="row">
+    @if($products)
         @foreach($products as $product)
             <div class="col-md-4 mb-4">
                 <div class="card">
@@ -23,6 +24,7 @@
                 </div>
             </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
