@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-utilities.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
+
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
-    
+
 </head>
 
 <body>
@@ -32,14 +32,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Главная</a>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}">Каталог</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('about') }}">О нас</a>
-                    </li>
                     @guest
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Главная</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('about') }}">О нас</a>
+                        </li>
                         <li class="nav-item d-flex">
                             <a class="nav-link active" aria-current="page" href="{{ route('signUp') }}">Регистрация</a>
                             <a class="nav-link active" aria-current="page" href="{{ route('signIn') }}">Авторизация</a>
@@ -47,13 +47,20 @@
                     @endguest
                     @auth
                         @if (Auth::user()->role_id == 2)
+                            <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Главная</a>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}">Каталог</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('about') }}">О нас</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('account') }}">Аккаунт</a>
                             </li>
                         @endif
                         @if (Auth::user()->role_id == 1)
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('admin') }}"></a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">Товары</a>
                             </li>
                         @endif
                         <li class="nav-item">

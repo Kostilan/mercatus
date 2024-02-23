@@ -26,8 +26,13 @@ Route::post('/account/update', [UserController::class, 'update_account'])->name(
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::middleware(['Role'])->group(function () {
+Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+Route::delete('/admin/delete/{id}', [AdminController::class, 'product_delete'])->name('product_delete');
+Route::get('/admin/update/{id}', [AdminController::class, 'product_update'])->name('product_update');
+Route::get('/admin/create', [AdminController::class, 'product_create'])->name('product_create');
+Route::post('/admin/create', [AdminController::class, 'product_create_valid'])->name('product_create_valid');
+    
 });
-
 
 
 
