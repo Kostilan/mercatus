@@ -13,8 +13,10 @@ class AdminController extends Controller
 {
     function admin()
     {
+        $categories = Category::all();
         $products = Product::all();
-        return view('admin.admin', compact('products'));
+        $brands = Brand::all();
+        return view('admin.admin', compact('products','brands','categories'));
     }
 
     function product_delete($id)
@@ -76,6 +78,95 @@ class AdminController extends Controller
                 'size_id.*.exists' => 'Указанный размер не существует.',
             ]
         );
-        
+    }
+
+    function brand_create()
+    {
+        return view('admin.brand_create');
+    }
+
+    function brand_delete($id)
+    {
+        $brand = Brand::find($id);
+        $brand->delete();
+        return redirect()->back()->with('success', 'Вы успешно удалили запись');
+    }
+
+    function brand_create_valid(Request $request)
+    {
+        $request->validate(
+            [
+                'title_brand' => 'required|string|max:255',
+            ],
+            [
+                'title_brand.required' => 'Поле "Название" обязательно для заполнения.',
+                'title_brand.string' => 'Поле "Название" должно содержать текст.',
+                'title_brand.max' => 'Поле "Название" не должно превышать 255 символов.',
+            ]
+        );
+
+        Brand::create([
+            'title_brand' =>$request['title_brand']
+        ]);
+        return redirect('admin')->with('success','Вы успешно создали бренд');
+    }
+
+    function brand_update($id){
+        $brand = Brand::find($id);
+        return view('admin.brand_update', compact('brand'));
+    }
+
+    function brand_update_valid(Request $request){
+        // dd($request['title_brand']);
+        $brand = Brand::find($request['id']);
+        $brand->title_brand = $request['title_brand'];
+        $brand->save();
+
+        return redirect()->back()->with('success','Вы успешно обновили запись');
+    }
+
+
+    function category_create()
+    {
+        return view('admin.category_create');
+    }
+
+    function category_delete($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back()->with('success', 'Вы успешно удалили запись');
+    }
+
+    function category_create_valid(Request $request)
+    {
+        $request->validate(
+            [
+                'title_category' => 'required|string|max:255',
+            ],
+            [
+                'title_category.required' => 'Поле "Название" обязательно для заполнения.',
+                'title_category.string' => 'Поле "Название" должно содержать текст.',
+                'title_category.max' => 'Поле "Название" не должно превышать 255 символов.',
+            ]
+        );
+
+        Category::create([
+            'title_category' =>$request['title_category']
+        ]);
+        return redirect('admin')->with('success','Вы успешно создали бренд');
+    }
+
+    function category_update($id){
+        $category = Category::find($id);
+        return view('admin.category_update', compact('category'));
+    }
+
+    function category_update_valid(Request $request){
+        $category = Category::find($request['id']);
+        $category->title_category = $request['title_category'];
+        $category->save();
+
+        return redirect()->back()->with('success','Вы успешно обновили запись');
     }
 }
